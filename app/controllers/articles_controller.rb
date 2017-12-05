@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :destroy, :edit, :update]
+  before_action :authenticate_user!, expect: [:index, :show]
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
 
   def index
-    @articles = Article.order("created_at DESC")
+    @articles = Article.where(:is_hidden => false).order("created_at DESC")
   end
 
   def show
@@ -43,6 +43,18 @@ class ArticlesController < ApplicationController
   end
 
 
+  def publish
+    @article = Article.find(params[:id])
+    @article.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @article = Article.find(params[:id])
+    @article.hide!
+    redirect_to :back
+  end
+
 
 
 
@@ -54,7 +66,7 @@ class ArticlesController < ApplicationController
 
 
   def article_params
-    params.require(:article).permit(:title, :content,:summary, :user_id, :image)
+    params.require(:article).permit(:title, :content,:summary, :user_id, :image, :is_hidden)
   end
 
 

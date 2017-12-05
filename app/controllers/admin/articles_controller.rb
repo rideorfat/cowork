@@ -42,6 +42,18 @@ class Admin::ArticlesController < ApplicationController
   end
 
 
+  def publish
+    @article = Article.find(params[:id])
+    @article.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @article = Article.find(params[:id])
+    @article.hide!
+    redirect_to :back
+  end
+
 
 
 
@@ -56,7 +68,7 @@ class Admin::ArticlesController < ApplicationController
 
 
   def article_params
-    params.require(:article).permit(:title, :content,:summary, :user_id, :image)
+    params.require(:article).permit(:title, :content,:summary, :user_id, :image, :is_hidden)
   end
 
 
