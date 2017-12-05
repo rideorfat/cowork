@@ -1,13 +1,13 @@
 class Admin::ArticlesController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_required
-  before_action :find_article, only: [:edit, :update, :destroy]
+  before_action :find_article, except: [:index, :new, :create]
   layout "admin"
 
   # ---CRUD---
 
   def index
-    @articles = Article.all.order("created_at DESC")
+    @articles = Article.all.order("position ASC")
   end
 
   def new
@@ -43,17 +43,24 @@ class Admin::ArticlesController < ApplicationController
 
 
   def publish
-    @article = Article.find(params[:id])
     @article.publish!
-    redirect_to :back
+    redirect_to admin_articles_path
   end
 
   def hide
-    @article = Article.find(params[:id])
     @article.hide!
-    redirect_to :back
+    redirect_to admin_articles_path
   end
 
+  def move_up
+    @article.move_higher
+    redirect_to admin_articles_path
+  end
+
+  def move_down
+    @article.move_lower
+    redirect_to admin_articles_path
+  end
 
 
 

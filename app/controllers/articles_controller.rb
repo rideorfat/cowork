@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = Article.where(:is_hidden => false).order("created_at DESC")
+    @articles = Article.where(:is_hidden => false).order("position ASC")
   end
 
   def show

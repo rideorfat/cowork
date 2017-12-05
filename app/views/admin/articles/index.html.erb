@@ -14,6 +14,8 @@
         <td>作者</td>
         <td>發表時間</td>
         <td>操作</td>
+        <td>排序</td>
+        <td>公開/隱藏</td>
       </tr>
     </thead>
     <tbody>
@@ -25,6 +27,19 @@
           <td>
             <%= link_to("Edit", edit_admin_article_path(article)) %> |
             <%= link_to("destroy", admin_article_path(article), method: :delete, data: { confirm: "你确定要删除吗？"}) %>
+          </td>
+          <td>
+            <%= link_to "向上", move_up_admin_article_path(article), method: :patch %> |
+            <%= link_to "向下", move_down_admin_article_path(article), method: :patch %>
+          </td>
+          <td>
+            <% if article.is_hidden %>
+              <%= link_to publish_admin_article_path(article), method: :post, class: "btn btn-xs btn-success" do %>
+              <i class="fa fa-eye"></i><% end %>
+            <% else %>
+              <%= link_to hide_admin_article_path(article), method: :post, class: "btn btn-xs btn-warning" do %>
+              <i class="fa fa-eye-slash"></i><% end %>
+            <% end %>
           </td>
         </tr>
       <% end %>
