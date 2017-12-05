@@ -28,7 +28,9 @@
 
         <!-- 主圖 -->
         <div class="article-image">
+          <% if @article.image.present? %>
           <%= image_tag(@article.image.thumb.url, class: "thumbnail") %>
+          <% end %>
         </div>
         <hr>
 

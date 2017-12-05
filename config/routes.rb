@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'welcome#index'
+  root 'articles#index'
 
   resources :articles
 
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :articles do
       member do
         patch :move_up
-        patch :move_down        
+        patch :move_down
         post :publish
         post :hide
       end
