@@ -1,8 +1,10 @@
 <%= simple_form_for [:admin, @article] do |f| %>
   <div class="form-group">
     <%= f.input :title, :label => "標題" %>
+    <%= f.input :image, as: :file ,:label => "首圖" %>
     <%= f.input :summary, :label => "摘要" %>
     <%= f.input :content, :label => "内容" %>
+
     <hr>
 
   </div>
