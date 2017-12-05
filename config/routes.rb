@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  resources :articles
 
 #-----------admin後台--------------
   namespace :admin do

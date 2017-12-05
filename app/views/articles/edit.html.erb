@@ -1,0 +1,8 @@
+<h2>編輯文章</h2>
+
+<%= render "form"%>
+
+ <% if @article.image.present? %>
+   <span>首圖</span> <br>
+   <%= image_tag(@article.image.thumb.url) %>
+ <% end %>

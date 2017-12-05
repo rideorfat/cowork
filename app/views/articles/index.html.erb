@@ -1,0 +1,16 @@
+<div class="row">
+  <% @articles.each do |article| %>
+    <div class="col-xs-6 col-md-3">
+      <%= link_to article do %>
+        文章標題：<%= article.title %> <br />
+        作者： <%= article.user.email %>
+        <% if article.image.present? %>
+          <%= image_tag(article.image.thumb.url, class: "thumbnail") %>
+        <% else %>
+          <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+        <% end %>
+      <% end %>
+
+    </div>
+  <% end %>
+</div>
