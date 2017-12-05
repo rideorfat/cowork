@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>後台</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="container">
+        <%= render "common/navbar" %>
+        <%= render "common/flashes" %>
+
+          <div class="">
+
+            <!-- 側邊分類 -->
+            <div class="col-md-2 nav-left-style">
+              <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+                <hr>
+                <li><%= link_to("文章管理", admin_articles_path) %></li>
+              </ul>
+            </div>
+
+            <!-- 主内容 -->
+            <div class="col-md-10">
+              <%= yield %>
+            </div>
+
+          </div>
+      </div>
+    </div>
+
+
+    <%= render "common/footer" %>
+
+  </body>
+</html>

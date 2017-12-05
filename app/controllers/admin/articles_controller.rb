@@ -1,6 +1,8 @@
 class Admin::ArticlesController < ApplicationController
   before_action :authenticate_user!
+  before_action :admin_required
   before_action :find_article, only: [:edit, :update, :destroy]
+  layout "admin"
 
   # ---CRUD---
 
