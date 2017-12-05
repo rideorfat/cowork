@@ -1,0 +1,10 @@
+<%= simple_form_for [:admin, @article] do |f| %>
+  <div class="form-group">
+    <%= f.input :title, :label => "標題" %>
+    <%= f.input :summary, :label => "摘要" %>
+    <%= f.input :content, :label => "内容" %>
+    <hr>
+
+  </div>
+  <%= f.submit "提交", class: "btn btn-sm btn-default", data: {disable_with: "Submiting..."} %>
+<% end %>
