@@ -38,6 +38,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'acts_as_list'
+gem 'bootstrap-wysihtml5-rails' 
 
 # --- 圖片上傳 ---
 gem 'carrierwave'
